@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SnehaBandh Matrimony – Settings</title>
+
+    <!-- Bootstrap (CSS only used for base grid if needed) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ===== Reset & Base ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #333333;
+            line-height: 1.7;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-fluid {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar-wrapper {
+            width: 250px;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar { padding: 1.5rem 1rem; height: 100%; }
+        .sidebar h5 {
+            color: #FF0000;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #FF0000;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li { margin-bottom: 0.5rem; }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a i { font-size: 1.1rem; width: 22px; text-align: center; }
+
+        .sidebar a:hover { background: #fff0f2; color: #FF0000; }
+        .sidebar a.active {
+            background: #fff0f2;
+            color: #FF0000;
+            font-weight: 600;
+            border-left: 4px solid #FF0000;
+        }
+
+        /* ===== Content Area ===== */
+        .content-wrapper {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 1.5rem;
+            background: #F0F8FF;
+            min-height: 100vh;
+        }
+
+        .content-container { max-width: 1100px; margin: 0 auto; }
+
+        /* ===== Main Box ===== */
+        .main-box {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .main-box h5 {
+            color: #FF0000;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #FF0000;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== Info Card ===== */
+        .info-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #ffcccc;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 5px; height: 100%;
+            background: linear-gradient(to bottom, #FF0000, #DC143C);
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.15);
+        }
+
+        .info-card label {
+            font-weight: 700;
+            color: #FF0000;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card label i { font-size: 1.2rem; }
+        .info-card p { color: #666; font-size: 0.85rem; margin: 0.25rem 0 1rem 0; }
+
+        /* ===== Inputs & Buttons ===== */
+        .form-control {
+            border: 2px solid #e0e0e0;
+            padding: 0.95rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #FF0000;
+            box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.15);
+            outline: none;
+            background: #fff;
+        }
+
+        .form-control:disabled { background: #f8f9fa; cursor: not-allowed; }
+
+        .form-label { font-weight: 600; color: #333333; margin-bottom: 0.75rem; font-size: 1rem; }
+
+        .btn-gradient {
+            background-image: linear-gradient(to right, #FF0000 0%, #DC143C 51%, #FF0000 100%);
+            background-size: 200% auto;
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: none;
+            align-self: center;
+            min-width: 140px;
+            min-height: 42px;
+            padding: 10px 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            cursor: pointer;
+            transition: 0.4s ease;
+            font-size: 0.92rem;
+        }
+
+        .btn-gradient:hover {
+            background-position: right center;
+            box-shadow: 0 3px 20px rgba(245, 113, 113, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #FF0000;
+            color: #FF0000;
+            font-weight: 600;
+            padding: 10px 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-size: 0.95rem;
+            min-width: 140px;
+        }
+
+        .btn-outline:hover {
+            background: #FF0000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .password-eye {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .password-eye:hover { color: #FF0000; }
+
+        .edit-form { display: none; animation: slideDown 0.4s ease; }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.75rem;
+            display: none;
+            padding: 0.5rem;
+            background: #ffe6e6;
+            border-radius: 8px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .error-message.show { display: block; animation: shake 0.3s; }
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25%     { transform: translateX(-5px); }
+            75%     { transform: translateX(5px); }
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            color: #155724;
+            padding: 1.25rem 1.75rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: none;
+            border-left: 5px solid #28a745;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+        }
+
+        .success-message.show { display: flex; align-items: center; gap: 12px; animation: slideDown 0.4s ease; }
+        .success-message i { font-size: 1.5rem; }
+
+        .invalid { border-color: #dc3545 !important; animation: shake 0.3s; }
+
+        .input-group-custom { display: flex; gap: 12px; align-items: center; }
+        .input-group-custom .form-control { flex: 1; }
+
+        .button-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 1.5rem; }
+
+        .edit-panel {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .edit-panel.show { display: block; }
+
+        .edit-panel h5 {
+            color: #FF0000;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #FF0000;
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .password-requirements {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* ===== Mobile & Responsive ===== */
+        @media (max-width: 991px) {
+            .sidebar-wrapper { width: 250px; }
+            .content-wrapper { margin-left: 250px; width: calc(100% - 250px); }
+        }
+
+        @media (max-width: 768px) {
+            /* show mobile menu button only on small screens */
+            .mobile-menu-btn { display: flex; }
+
+            .sidebar-wrapper { transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar-wrapper.mobile-open { transform: translateX(0); }
+
+            .content-wrapper { margin-left: 0; width: 100%; padding: 1rem; }
+
+            .mobile-menu-btn {
+                position: fixed; top: 1rem; left: 1rem; z-index: 1001;
+                background: #FF0000; color: white; border: none;
+                width: 50px; height: 50px; border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                font-size: 1.5rem; box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+                cursor: pointer;
+            }
+
+            .mobile-overlay {
+                display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.5); z-index: 999;
+            }
+            .mobile-overlay.show { display: block; }
+
+            .main-box, .edit-panel { padding: 2rem 1.5rem; border-radius: 16px; }
+            .main-box h5, .edit-panel h5 { font-size: 1.35rem; }
+            .info-card { padding: 1.5rem; }
+            .info-card label { font-size: 1.1rem; }
+            .input-group-custom { flex-direction: column; }
+            .btn-gradient, .btn-outline { width: 100%; justify-content: center; }
+            .button-group { flex-direction: column; }
+            .button-group button { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .main-box, .edit-panel { padding: 1.5rem 1rem; }
+            .info-card { padding: 1.25rem; }
+            .form-control { font-size: 0.9rem; padding: 0.85rem; }
+            .btn-gradient, .btn-outline { font-size: 0.875rem; padding: 10px 20px; }
+        }
+
+        /* small helper for requirement icons */
+        .req-item { display:flex; align-items:center; gap:8px; margin:4px 0; font-size:0.95rem; }
+        .req-item i { width:18px; text-align:center; }
+        .req-ok { color: #28a745; }
+        .req-bad { color: #dc3545; }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Button (hidden by CSS on larger screens) -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" style="display:none;">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+    <div class="container-fluid">
+        <!-- SIDEBAR -->
+        <nav class="sidebar-wrapper" id="sidebarWrapper" aria-label="Settings sidebar">
+            <div class="sidebar">
+                <h5><i class="fas fa-cog" aria-hidden="true"></i> Settings</h5>
+                <ul>
+                    <li><a href="#" class="active" data-target="account"><i class="fas fa-user-circle" aria-hidden="true"></i> Account Settings</a></li>
+                    <li><a href="#" data-target="deactivate"><i class="fas fa-user-slash" aria-hidden="true"></i> De-activate Profile</a></li>
+                    <li><a href="#" data-target="delete"><i class="fas fa-trash-alt" aria-hidden="true"></i> Delete Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- CONTENT AREA -->
+        <main class="content-wrapper" id="contentWrapper">
+            <div class="content-container">
+
+                <div class="success-message" id="successMessage" role="status" aria-live="polite" aria-hidden="true">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    <span id="successText">Settings updated successfully!</span>
+                </div>
+
+                <div class="row">
+                    <!-- LEFT SIDE - Display Info -->
+                    <div class="col-lg-6 col-md-12">
+                        <div class="main-box" role="region" aria-labelledby="accountHeading">
+                            <h5 id="accountHeading"><i class="fas fa-user-cog" aria-hidden="true"></i> My Account</h5>
+
+                            <!-- EMAIL SECTION -->
+                            <section class="info-card" aria-labelledby="emailLabel">
+                                <label id="emailLabel"><i class="fas fa-envelope" aria-hidden="true"></i> Email Address</label>
+                                <p>Your primary email for communications and login</p>
+
+                                <div class="input-group-custom">
+                                    <!-- Keep value as requested (Option A) -->
+                                    <input type="email" class="form-control" id="displayEmail"
+                                        value="john.doe@example.com" disabled aria-disabled="true" aria-label="Displayed email">
+
+                                    <button class="btn-gradient" id="editEmailBtn" type="button" aria-controls="emailEditPanel" aria-expanded="false">
+                                        <i class="fas fa-edit" aria-hidden="true"></i> Edit
+                                    </button>
+                                </div>
+                            </section>
+
+                            <!-- PASSWORD SECTION -->
+                            <section class="info-card" aria-labelledby="passwordLabel">
+                                <label id="passwordLabel"><i class="fas fa-lock" aria-hidden="true"></i> Password</label>
+                                <p>For security, we display a masked version</p>
+
+                                <div class="input-group-custom">
+                                    <div class="position-relative" style="flex:1;">
+                                        <input type="password" class="form-control" id="displayPassword"
+                                            value="Secret123!" disabled aria-disabled="true" aria-label="Displayed masked password">
+                                        <i class="fas fa-eye password-eye" id="toggleDisplayPassword" role="button" aria-label="Show password" tabindex="0"></i>
+                                    </div>
+
+                                    <button class="btn-gradient" id="editPasswordBtn" type="button" aria-controls="passwordEditPanel" aria-expanded="false">
+                                        <i class="fas fa-edit" aria-hidden="true"></i> Edit
+                                    </button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT SIDE - Edit Forms -->
+                    <div class="col-lg-6 col-md-12">
+                        <!-- EMAIL EDIT FORM -->
+                        <section class="edit-panel" id="emailEditPanel" aria-hidden="true" aria-labelledby="emailEditHeading">
+                            <h5 id="emailEditHeading"><i class="fas fa-envelope-open-text" aria-hidden="true"></i> Change Email</h5>
+
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-envelope" aria-hidden="true"></i> Existing Email</label>
+                                <input type="email" class="form-control" id="existingEmail"
+                                    value="john.doe@example.com" disabled>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-envelope" aria-hidden="true"></i> New Email Address</label>
+                                <input type="email" class="form-control" id="newEmail" placeholder="Enter new email address" aria-describedby="emailError">
+                                <div class="error-message" id="emailError" role="alert" aria-live="assertive">
+                                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Please enter a valid email address
+                                </div>
+                            </div>
+
+                            <div class="button-group">
+                                <button class="btn-gradient" id="verifyEmailBtn" type="button"><i class="fas fa-check" aria-hidden="true"></i> Verify</button>
+                                <button class="btn-outline" id="cancelEmailBtn" type="button"><i class="fas fa-times" aria-hidden="true"></i> Cancel</button>
+                            </div>
+                        </section>
+
+                        <!-- PASSWORD EDIT FORM -->
+                        <section class="edit-panel" id="passwordEditPanel" aria-hidden="true" aria-labelledby="passwordEditHeading">
+                            <h5 id="passwordEditHeading"><i class="fas fa-key" aria-hidden="true"></i> Change Password</h5>
+
+                            <div class="password-requirements" aria-live="polite">
+                                <strong>Password Requirements:</strong>
+                                <div id="passwordReqList" style="margin-top:8px;">
+                                    <div class="req-item" id="req-length"><i class="fas fa-circle req-bad" aria-hidden="true"></i> 6-8 characters</div>
+                                    <div class="req-item" id="req-upper"><i class="fas fa-circle req-bad" aria-hidden="true"></i> At least one uppercase letter</div>
+                                    <div class="req-item" id="req-lower"><i class="fas fa-circle req-bad" aria-hidden="true"></i> At least one lowercase letter</div>
+                                    <div class="req-item" id="req-number"><i class="fas fa-circle req-bad" aria-hidden="true"></i> At least one number</div>
+                                    <div class="req-item" id="req-special"><i class="fas fa-circle req-bad" aria-hidden="true"></i> At least one special character (!@#$%^&amp;*)</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 mt-3">
+                                <label class="form-label"><i class="fas fa-key" aria-hidden="true"></i> New Password</label>
+                                <div class="position-relative">
+                                    <input type="password" class="form-control" id="newPassword" placeholder="Enter new password" maxlength="8" aria-describedby="newPasswordError">
+                                    <i class="fas fa-eye password-eye" id="toggleNewPassword" role="button" aria-label="Show new password" tabindex="0"></i>
+                                </div>
+                                <div class="password-strength" style="margin-top:8px;">
+                                    <div id="strengthBar" style="height:6px; width:100%; background:#eee; border-radius:4px;"></div>
+                                </div>
+                                <div class="error-message" id="newPasswordError" role="alert" aria-live="assertive">
+                                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Password must meet all requirements
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-lock" aria-hidden="true"></i> Confirm Password</label>
+                                <div class="position-relative">
+                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password" maxlength="8" aria-describedby="confirmPasswordError">
+                                    <i class="fas fa-eye password-eye" id="toggleConfirmPassword" role="button" aria-label="Show confirm password" tabindex="0"></i>
+                                </div>
+                                <div class="error-message" id="confirmPasswordError" role="alert" aria-live="assertive">
+                                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Passwords don't match
+                                </div>
+                            </div>
+
+                            <div class="button-group">
+                                <button class="btn-gradient" id="verifyPasswordBtn" type="button"><i class="fas fa-check" aria-hidden="true"></i> Verify</button>
+                                <button class="btn-outline" id="cancelPasswordBtn" type="button"><i class="fas fa-times" aria-hidden="true"></i> Cancel</button>
+                            </div>
+                        </section>
+                    </div> <!-- /right col -->
+                </div> <!-- /row -->
+
+            </div> <!-- /content-container -->
+        </main> <!-- /content-wrapper -->
+    </div> <!-- /container-fluid -->
+
+    <!-- jQuery (single include) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+    $(function () {
+        // Keep a reference to timeout so we can clear if needed
+        let successTimeout = null;
+
+        // Show mobile menu button only on small screens
+        function updateMobileMenuBtnVisibility() {
+            if (window.innerWidth <= 768) {
+                $('#mobileMenuBtn').css('display', 'flex');
+            } else {
+                $('#mobileMenuBtn').css('display', 'none');
+                $('#sidebarWrapper').removeClass('mobile-open');
+                $('#mobileOverlay').removeClass('show').attr('aria-hidden', 'true');
+            }
+        }
+        updateMobileMenuBtnVisibility();
+        $(window).on('resize', updateMobileMenuBtnVisibility);
+
+        // Mobile Menu Toggle
+        $('#mobileMenuBtn').on('click', function () {
+            const $sidebar = $('#sidebarWrapper');
+            const isOpen = $sidebar.hasClass('mobile-open');
+            if (isOpen) {
+                $sidebar.removeClass('mobile-open');
+                $('#mobileOverlay').removeClass('show').attr('aria-hidden', 'true');
+            } else {
+                $sidebar.addClass('mobile-open');
+                $('#mobileOverlay').addClass('show').attr('aria-hidden', 'false');
+            }
+        });
+
+        $('#mobileOverlay').on('click', function () {
+            $('#sidebarWrapper').removeClass('mobile-open');
+            $('#mobileOverlay').removeClass('show').attr('aria-hidden', 'true');
+        });
+
+        // Prevent default on sidebar anchors and handle active state
+        $('.sidebar a').on('click', function (e) {
+            e.preventDefault();
+            $('.sidebar a').removeClass('active');
+            $(this).addClass('active');
+
+            // Close on mobile
+            if ($(window).width() <= 768) {
+                $('#sidebarWrapper').removeClass('mobile-open');
+                $('#mobileOverlay').removeClass('show').attr('aria-hidden', 'true');
+            }
+        });
+
+        // Helper to show/hide edit panels
+        function showPanel(panelSelector) {
+            $('.edit-panel').removeClass('show').hide().attr('aria-hidden', 'true');
+            $(panelSelector).addClass('show').show().attr('aria-hidden', 'false');
+            // Scroll into view for larger screen
+            if ($(window).width() > 991) {
+                $('html, body').animate({ scrollTop: $(panelSelector).offset().top - 20 }, 400);
+            }
+        }
+
+        function hidePanel(panelSelector) {
+            $(panelSelector).removeClass('show').hide().attr('aria-hidden', 'true');
+        }
+
+        // Edit panel toggles (email)
+        $('#editEmailBtn').on('click', function () {
+            showPanel('#emailEditPanel');
+            $(this).attr('aria-expanded', 'true');
+        });
+
+        $('#cancelEmailBtn').on('click', function () {
+            hidePanel('#emailEditPanel');
+            $('#newEmail').val('').removeClass('invalid');
+            $('#emailError').removeClass('show').attr('aria-hidden', 'true');
+            $('#editEmailBtn').attr('aria-expanded', 'false');
+        });
+
+        // Edit panel toggles (password)
+        $('#editPasswordBtn').on('click', function () {
+            showPanel('#passwordEditPanel');
+            $(this).attr('aria-expanded', 'true');
+        });
+
+        $('#cancelPasswordBtn').on('click', function () {
+            hidePanel('#passwordEditPanel');
+            $('#newPassword, #confirmPassword').val('').removeClass('invalid');
+            $('#newPasswordError, #confirmPasswordError').removeClass('show').attr('aria-hidden', 'true');
+            // reset requirements UI
+            resetPasswordReqUI();
+            $('#editPasswordBtn').attr('aria-expanded', 'false');
+        });
+
+        // Password toggle helper (works for click and keyboard Enter)
+        function bindToggle(iconSelector, inputSelector) {
+            function toggleAction(e) {
+                if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+                const $input = $(inputSelector);
+                const $icon = $(iconSelector);
+                if ($input.attr('type') === 'password') {
+                    $input.attr('type', 'text');
+                    $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    $input.attr('type', 'password');
+                    $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            }
+            $(iconSelector).on('click', toggleAction);
+            $(iconSelector).on('keydown', toggleAction);
+        }
+
+        bindToggle('#toggleDisplayPassword', '#displayPassword');
+        bindToggle('#toggleNewPassword', '#newPassword');
+        bindToggle('#toggleConfirmPassword', '#confirmPassword');
+
+        // Password validation rules (explicit)
+        function checkPasswordRequirements(password) {
+            const lenOk = password.length >= 6 && password.length <= 8;
+            const upperOk = /[A-Z]/.test(password);
+            const lowerOk = /[a-z]/.test(password);
+            const numberOk = /[0-9]/.test(password);
+            // limited special characters allowed: !@#$%^&*
+            const specialOk = /[!@#$%^&*]/.test(password);
+            return { lenOk, upperOk, lowerOk, numberOk, specialOk };
+        }
+
+        function validatePasswordFinal(password) {
+            const r = checkPasswordRequirements(password);
+            return r.lenOk && r.upperOk && r.lowerOk && r.numberOk && r.specialOk;
+        }
+
+        // UI updates for password requirement list
+        function updatePasswordReqUI(password) {
+            const r = checkPasswordRequirements(password);
+            updateReqIcon('#req-length i', r.lenOk);
+            updateReqIcon('#req-upper i', r.upperOk);
+            updateReqIcon('#req-lower i', r.lowerOk);
+            updateReqIcon('#req-number i', r.numberOk);
+            updateReqIcon('#req-special i', r.specialOk);
+
+            // Strength bar (naive calculation based on how many true)
+            const score = [r.lenOk, r.upperOk, r.lowerOk, r.numberOk, r.specialOk].filter(Boolean).length;
+            const percent = (score / 5) * 100;
+            $('#strengthBar').css('width', percent + '%');
+
+            // set color via inline background for visibility (not specifying named colors)
+            let bg = '#eee';
+            if (score <= 2) bg = '#f8d7da'; // weak (reddish)
+            else if (score === 3) bg = '#fff3cd'; // medium (yellowish)
+            else bg = '#d4edda'; // strong (greenish)
+            $('#strengthBar').css('background', bg);
+        }
+
+        function updateReqIcon(selector, ok) {
+            const $i = $(selector);
+            if (ok) {
+                $i.removeClass('fa-circle req-bad').addClass('fa-check req-ok');
+            } else {
+                $i.removeClass('fa-check req-ok').addClass('fa-circle req-bad');
+            }
+        }
+
+        function resetPasswordReqUI() {
+            $('#passwordReqList i').each(function () {
+                $(this).removeClass('fa-check req-ok').addClass('fa-circle req-bad');
+            });
+            $('#strengthBar').css({ width: '0%', background: '#eee' });
+        }
+
+        // wire up password input dynamic checks
+        $('#newPassword').on('input', function () {
+            const val = $(this).val();
+            updatePasswordReqUI(val);
+            if (validatePasswordFinal(val)) {
+                $('#newPassword').removeClass('invalid');
+                $('#newPasswordError').removeClass('show').attr('aria-hidden', 'true');
+            }
+        });
+
+        // Email verification
+        $('#verifyEmailBtn').on('click', function () {
+            const email = $('#newEmail').val().trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                $('#newEmail').addClass('invalid').focus();
+                $('#emailError').addClass('show').attr('aria-hidden', 'false');
+            } else {
+                $('#newEmail').removeClass('invalid');
+                $('#emailError').removeClass('show').attr('aria-hidden', 'true');
+
+                // update displayed email
+                $('#displayEmail').val(email);
+                $('#existingEmail').val(email);
+
+                // hide panel & reset
+                hidePanel('#emailEditPanel');
+                $('#newEmail').val('');
+                // showSuccessMessage('Email updated successfully!');
+            }
+        });
+
+        // Password verification
+        $('#verifyPasswordBtn').on('click', function () {
+            const newPass = $('#newPassword').val();
+            const confirmPass = $('#confirmPassword').val();
+            let isValid = true;
+
+            if (!validatePasswordFinal(newPass)) {
+                $('#newPassword').addClass('invalid').focus();
+                $('#newPasswordError').addClass('show').attr('aria-hidden', 'false');
+                isValid = false;
+            } else {
+                $('#newPassword').removeClass('invalid');
+                $('#newPasswordError').removeClass('show').attr('aria-hidden', 'true');
+            }
+
+            if (newPass !== confirmPass || confirmPass.length === 0) {
+                $('#confirmPassword').addClass('invalid');
+                $('#confirmPasswordError').addClass('show').attr('aria-hidden', 'false');
+                isValid = false;
+            } else {
+                $('#confirmPassword').removeClass('invalid');
+                $('#confirmPasswordError').removeClass('show').attr('aria-hidden', 'true');
+            }
+
+            if (isValid) {
+                // update displayed password (for demo only; in real app you wouldn't display raw password)
+                $('#displayPassword').val(newPass);
+                hidePanel('#passwordEditPanel');
+                $('#newPassword, #confirmPassword').val('');
+                resetPasswordReqUI();
+                // showSuccessMessage('Password changed successfully!');
+            }
+        });
+
+        // success message handling
+        function showSuccessMessage(text) {
+            if (successTimeout) {
+                clearTimeout(successTimeout);
+                successTimeout = null;
+            }
+            $('#successText').text(text || 'Settings updated successfully!');
+            $('#successMessage').addClass('show').attr('aria-hidden', 'false');
+            $('html, body').animate({ scrollTop: 0 }, 300);
+            successTimeout = setTimeout(function () {
+                $('#successMessage').removeClass('show').attr('aria-hidden', 'true');
+            }, 3500);
+        }
+
+        // small accessibility: allow Enter on password eye icons (already attached) and keyboard tab
+        // also clear error states on typing
+        $('#newEmail').on('input', function () {
+            $(this).removeClass('invalid');
+            $('#emailError').removeClass('show').attr('aria-hidden', 'true');
+        });
+
+        $('#confirmPassword').on('input', function () {
+            $(this).removeClass('invalid');
+            $('#confirmPasswordError').removeClass('show').attr('aria-hidden', 'true');
+        });
+
+        // initial reset
+        resetPasswordReqUI();
+    });
+    </script>
+</body>
+</html>
