@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login with Cookies</title>
+</head>
+<body>
+  <h2 id="welcome">Login</h2>
+
+  <div id="loginBox">
+    <label>Username:</label>
+    <input type="text" id="username"><br><br>
+    <label>Password:</label>
+    <input type="password" id="password"><br><br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    // -------- Cookie helpers --------
+    function setCookie(name, value, days) {
+      let expires = "";
+      if (days) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + d.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let c of ca) {
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length);
+      }
+      return null;
+    }
+
+    function eraseCookie(name) {
+      document.cookie = name + '=; Max-Age=-99999999; path=/';
+    }
+
+    // -------- Login function --------
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "admin" && pass === "1234") {
+        setCookie("username", user, 1);  // store for 1 day
+        document.getElementById("welcome").textContent = "✅ Welcome " + user;
+        document.getElementById("loginBox").style.display = "none";
+      } else {
+        alert("❌ Wrong username or password");
+      }
+    }
+
+    // -------- Auto-login if cookie exists --------
+    window.onload = () => {
+      const savedUser = getCookie("username");
+      if (savedUser) {
+        document.getElementById("welcome").textContent = "✅ Welcome back, " + savedUser;
+        document.getElementById("loginBox").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
