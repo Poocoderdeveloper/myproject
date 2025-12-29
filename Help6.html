@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SnehaBandh Matrimony – Help & Support</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f6f6f6;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 { font-size: 3rem; font-weight: 700; }
+        h2 { font-size: 2.5rem; font-weight: 700; }
+        h3 { font-size: 2rem; font-weight: 700; }
+        h4 { font-size: 1.75rem; font-weight: 600; }
+        h5 { font-size: 1.5rem; font-weight: 600; }
+        h6 { font-size: 1.25rem; font-weight: 600; }
+        p { font-size: 1rem; font-weight: 400; }
+
+        /* Header Navigation */
+        .top-nav {
+            background: linear-gradient(to right, #d61c1c, #e91e63);
+            padding: 15px 0;
+            color: white;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .top-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .upgrade-btn {
+            background: #ff5722;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* Main Help Section */
+        .help-header {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .help-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .help-header p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* Main Content Area */
+        .help-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* FAQ Section */
+        .faq-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 0 0 280px;
+        }
+
+        .faq-box h6 {
+            background: #f5f5f5;
+            padding: 12px;
+            margin: -25px -25px 15px -25px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .faq-item {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            font-size: 0.9375rem;
+            color: #333;
+            background: white;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s;
+            position: relative;
+            font-weight: 500;
+            padding-right: 3rem;
+        }
+
+        .faq-question {
+            display: block;
+        }
+
+        .faq-item:hover {
+            border-color: #d61c1c;
+            box-shadow: 0 4px 10px rgba(214, 28, 28, 0.1);
+        }
+
+        .faq-item.active {
+            background: #fef5f5;
+            border-color: #d61c1c;
+        }
+
+        .faq-item.active .faq-question {
+            font-weight: 600;
+        }
+
+        .faq-item .plus-icon {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            color: #d61c1c;
+            font-weight: 600;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .faq-item.active .plus-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 1rem 0 0 0;
+            margin-top: 0.75rem;
+            border-top: 1px solid #f0f0f0;
+            font-size: 0.875rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .faq-answer.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Query Form */
+        .query-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+
+        .query-form h5 {
+            margin-bottom: 20px;
+        }
+
+        .required-text {
+            color: #d61c1c;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #d61c1c;
+            box-shadow: 0 0 0 0.2rem rgba(214, 28, 28, 0.25);
+        }
+
+        .submit-btn {
+            background: #dd0404;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info Box */
+        .contact-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 0 0 280px;
+        }
+
+        .contact-box h6 {
+            border-bottom: 2px solid #d61c1c;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .contact-info strong {
+            color: #d61c1c;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .help-email {
+            color: #d61c1c;
+            font-weight: 600;
+        }
+
+        /* Track Query Section */
+        .track-query-section {
+            background: #f8f9fa;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .track-query-section h6 {
+            color: #d61c1c;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Status Tracking Styles */
+        .status-info {
+            background: #f8f9fa;
+            border: 2px solid #d61c1c;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            animation: slideDown 0.3s ease;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .status-header h6 {
+            margin: 0;
+            color: #d61c1c;
+        }
+
+        .status-badge {
+            padding: 0.375rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.in-progress {
+            background: #cce5ff;
+            color: #004085;
+        }
+
+        .status-badge.resolved {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .status-details p {
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 0.9375rem;
+        }
+
+        .status-details strong {
+            color: #d61c1c;
+        }
+
+        .status-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .status-timeline::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            max-width: 150px;
+        }
+
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            border: 3px solid #fff;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item.active .timeline-dot {
+            background: #d61c1c;
+            box-shadow: 0 0 0 4px rgba(214, 28, 28, 0.2);
+        }
+
+        .timeline-item.active .timeline-dot::after {
+            background: white;
+        }
+
+        .timeline-text {
+            font-size: 0.75rem;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .timeline-item.active .timeline-text {
+            color: #d61c1c;
+            font-weight: 600;
+        }
+
+        .status-progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .status-progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #d61c1c, #e91e63);
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        .status-message {
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            border-left: 3px solid #d61c1c;
+            font-size: 0.875rem;
+            color: #555;
+        }
+
+        .status-message strong {
+            color: #d61c1c;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Validation styles */
+        .invalid {
+            border-color: #dc3545 !important;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Success message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        /* OTP Modal */
+        .otp-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .otp-overlay.show {
+            display: flex;
+        }
+
+        .otp-modal {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .otp-modal h5 {
+            color: #d61c1c;
+            margin-bottom: 15px;
+        }
+
+        .otp-modal p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .otp-input:focus {
+            border-color: #d61c1c;
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        .otp-input.invalid {
+            border-color: #dc3545;
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .resend-otp {
+            color: #d61c1c;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .resend-otp:hover {
+            text-decoration: underline;
+        }
+
+        .resend-otp.disabled {
+            color: #999;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .timer {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .otp-buttons {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div style="width: 80px; height: 80px; background: white; border-radius: 50%; margin-right: 20px;"></div>
+                <div class="d-flex">
+                    <a href="#">My Shaadi</a>
+                    <a href="#">Matches</a>
+                    <a href="#">Search</a>
+                    <a href="#">Services</a>
+                    <a href="#">Inbox</a>
+                    <a href="#" class="upgrade-btn">Upgrade Now</a>
+                    <a href="#">Help</a>
+                </div>
+            </div>
+            <div>
+                <a href="#"><i class="bi bi-person-circle"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Header -->
+    <div class="help-header">
+        <h3>Help</h3>
+        <p>Contact Us for any Help-Shubhamangalsohala.com</p>
+        <p>Have question / complaint / feedback for us? We are here to help you.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="help-content">
+        <div class="content-row">
+
+            <!-- FAQ Section -->
+            <div class="faq-box">
+                <h6>FAQ</h6>
+                
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to Signup?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Visit the website, click on "Register" button, fill in your details including name, email, phone number, and create a password. Complete your profile with personal and family information to get started.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">Forgot Password</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        <p>⚪ Please Select the "Forgot Password" option and enter the registered e-mail ID</p>
+                        <p>⚪ A link to reset the password will be sent to your registered e-mail ID</p>
+                        <p>⚪ Click on the link and enter the new password</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to Edit Profile?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Go to "My Profile" section from the top menu. Click on "Edit" button next to any section you want to update. Make your changes and click "Save" to update your profile information.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to Search Profile?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Click on "Search" in the navigation menu. Use filters like age, height, education, location, etc. to find matching profiles. You can save your search preferences for quick access later.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to Send Message?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Visit the profile you want to contact. Click on "Send Message" or "Express Interest" button. Write your message and click send. The member will receive your message in their inbox.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to Reply to message?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Go to your "Inbox" from the top menu. Open the message you want to reply to. Click "Reply" button at the bottom, type your response and click "Send".
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to add Photo?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Go to "My Photos" section. Click on "Add Photo" or "Upload" button. Select images from your device (JPG, PNG format, max 5MB). Click upload and wait for verification.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to add Horoscope?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Navigate to your profile settings. Find "Horoscope/Astro Details" section. You can either enter details manually or upload your horoscope document (PDF format supported).
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <span class="faq-question">How to add Trust document?</span>
+                    <span class="plus-icon">+</span>
+                    <div class="faq-answer">
+                        Go to profile verification section. Click "Upload Trust Document". Select your document (Aadhaar, PAN, etc.) and upload. Your profile will show as verified once approved by admin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Query Form -->
+            <div class="query-form">
+                <h5>Post Your Query</h5>
+                <p class="required-text">*marked fields are mandatory</p>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Your query has been submitted successfully! We'll get back to you soon.
+                </div>
+
+                <!-- Track Existing Query Section -->
+                <div class="track-query-section mb-4">
+                    <h6>Track Your Query Status</h6>
+                    <p class="text-muted" style="font-size: 0.875rem;">Already submitted a query? Enter your Query ID to track status:</p>
+                    <div class="d-flex gap-2">
+                        <input type="text" class="form-control" id="trackQueryId" placeholder="Enter Query ID (e.g., SN-2024-0001)" style="max-width: 300px;">
+                        <button class="btn btn-secondary" onclick="trackExistingQuery()">Track Status</button>
+                    </div>
+                    <div class="error-message" id="trackError">Please enter a valid Query ID</div>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Query Status Section -->
+                <div class="status-info" id="statusInfo" style="display: none;">
+                    <div class="status-header">
+                        <h6>Query Status</h6>
+                        <span class="status-badge" id="statusBadge">Pending</span>
+                    </div>
+                    <div class="status-details">
+                        <p><strong>Query ID:</strong> <span id="queryId">SN-2024-0001</span></p>
+                        <p><strong>Type:</strong> <span id="queryTypeDisplay">Query</span></p>
+                        <p><strong>Submitted on:</strong> <span id="submittedDate">-</span></p>
+                        <p><strong>Expected Response:</strong> <span id="expectedDate">Within 24-48 hours</span></p>
+                        <p><strong>Subject:</strong> <span id="subjectDisplay">-</span></p>
+                    </div>
+                    <div class="status-timeline">
+                        <div class="timeline-item active" id="timeline-acknowledge">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Acknowledged</span>
+                        </div>
+                        <div class="timeline-item" id="timeline-analysis">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Analysis & RCA</span>
+                        </div>
+                        <div class="timeline-item" id="timeline-assigned">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Team Assigned</span>
+                        </div>
+                        <div class="timeline-item" id="timeline-working">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Working on Fix</span>
+                        </div>
+                        <div class="timeline-item" id="timeline-testing">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Testing</span>
+                        </div>
+                        <div class="timeline-item" id="timeline-resolved">
+                            <span class="timeline-dot"></span>
+                            <span class="timeline-text">Resolved</span>
+                        </div>
+                    </div>
+
+                    <div class="status-progress-bar">
+                        <div class="status-progress-fill" id="progressBar"></div>
+                    </div>
+
+                    <div class="status-message" id="statusMessage">
+                        <strong>Current Status:</strong>
+                        <span id="statusMessageText">Thank you for contacting us! Your query has been received and acknowledged.</span>
+                    </div>
+
+                    <button class="btn btn-secondary mt-3" onclick="hideStatus()">Hide Status</button>
+                </div>
+
+                <form id="queryForm" onsubmit="handleSubmit(event)">
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Name*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="userName" required>
+                            <div class="error-message" id="nameError">Please enter your name</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">e mail ID*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" id="userEmail" required onblur="validateEmail()">
+                            <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Phone No.*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="tel" class="form-control" id="userPhone" pattern="[0-9]{10}" maxlength="10" required onblur="validatePhone()">
+                            <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Type*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="queryType" required>
+                                <option value="" disabled selected>Select Type</option>
+                                <option value="query">Query</option>
+                                <option value="complaint">Complaint</option>
+                                <!-- <option value="feedback">Feedback</option>
+                                <option value="suggestion">Suggestion</option> -->
+                            </select>
+                            <div class="error-message" id="typeError">Please select a type</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Subject*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="querySubject" required>
+                            <div class="error-message" id="subjectError">Please enter a subject</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <label class="form-label">Question*</label>
+                        </div>
+                        <div class="col-md-9">
+                            <textarea class="form-control" rows="4" id="queryQuestion" required onblur="validateQuestion()"></textarea>
+                            <div class="error-message" id="questionError">Please enter your question (minimum 10 characters)</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-box">
+                <h6>Call us</h6>
+                <div class="contact-info">
+                    <p>You can call our help line at:</p>
+                    <strong>7507854221</strong>
+                    <p class="mt-3">We are available on all working days between 10 AM To 6PM(IST)</p>
+                </div>
+
+                <h6 class="mt-4">Write to us</h6>
+                <div class="contact-info">
+                    <p>Please write to us at</p>
+                    <p class="help-email">Help<br>hrdibhbhti321@gmail.com</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let formData = {};
+
+        // Validate Email
+        function validateEmail() {
+            const emailInput = document.getElementById('userEmail');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(emailInput.value)) {
+                emailInput.classList.add('invalid');
+                emailError.classList.add('show');
+                return false;
+            } else {
+                emailInput.classList.remove('invalid');
+                emailError.classList.remove('show');
+                return true;
+            }
+        }
+
+        // Validate Phone
+        function validatePhone() {
+            const phoneInput = document.getElementById('userPhone');
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^[0-9]{10}$/;
+            
+            if (!phoneRegex.test(phoneInput.value)) {
+                phoneInput.classList.add('invalid');
+                phoneError.classList.add('show');
+                return false;
+            } else {
+                phoneInput.classList.remove('invalid');
+                phoneError.classList.remove('show');
+                return true;
+            }
+        }
+
+        // Validate Question
+        function validateQuestion() {
+            const questionInput = document.getElementById('queryQuestion');
+            const questionError = document.getElementById('questionError');
+            
+            if (questionInput.value.trim().length < 10) {
+                questionInput.classList.add('invalid');
+                questionError.classList.add('show');
+                return false;
+            } else {
+                questionInput.classList.remove('invalid');
+                questionError.classList.remove('show');
+                return true;
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Validate all fields
+            const isEmailValid = validateEmail();
+            const isPhoneValid = validatePhone();
+            const isQuestionValid = validateQuestion();
+            
+            const name = document.getElementById('userName').value.trim();
+            const type = document.getElementById('queryType').value;
+            const subject = document.getElementById('querySubject').value.trim();
+            
+            // Check all required fields
+            if (!name) {
+                document.getElementById('nameError').classList.add('show');
+                document.getElementById('userName').classList.add('invalid');
+                return;
+            }
+            
+            if (!type) {
+                document.getElementById('typeError').classList.add('show');
+                document.getElementById('queryType').classList.add('invalid');
+                return;
+            }
+            
+            if (!subject) {
+                document.getElementById('subjectError').classList.add('show');
+                document.getElementById('querySubject').classList.add('invalid');
+                return;
+            }
+            
+            if (!isEmailValid || !isPhoneValid || !isQuestionValid) {
+                return;
+            }
+            
+            // Store form data
+            formData = {
+                name: name,
+                email: document.getElementById('userEmail').value,
+                phone: document.getElementById('userPhone').value,
+                type: type,
+                subject: subject,
+                question: document.getElementById('queryQuestion').value
+            };
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Show query status tracking immediately
+            showQueryStatus(formData.type, formData.subject);
+            
+            // Reset form
+            document.getElementById('queryForm').reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+            
+            console.log('Query submitted successfully:', formData);
+        }
+
+        // Show query status with detailed workflow
+        function showQueryStatus(queryType, subject) {
+            const statusInfo = document.getElementById('statusInfo');
+            const statusBadge = document.getElementById('statusBadge');
+            const queryId = 'SN-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+            const submittedDate = new Date().toLocaleString('en-IN', { 
+                day: '2-digit', 
+                month: 'short', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            
+            // Display query type and subject
+            document.getElementById('queryTypeDisplay').textContent = queryType.charAt(0).toUpperCase() + queryType.slice(1);
+            document.getElementById('subjectDisplay').textContent = subject;
+            
+            // Set initial status based on type
+            if (queryType === 'complaint') {
+                statusBadge.textContent = 'Acknowledged';
+                statusBadge.className = 'status-badge in-progress';
+                document.getElementById('expectedDate').textContent = 'Within 12-24 hours (Priority)';
+            } else if (queryType === 'query') {
+                statusBadge.textContent = 'Acknowledged';
+                statusBadge.className = 'status-badge pending';
+                document.getElementById('expectedDate').textContent = 'Within 24-48 hours';
+            } else {
+                statusBadge.textContent = 'Received';
+                statusBadge.className = 'status-badge pending';
+                document.getElementById('expectedDate').textContent = 'Within 48-72 hours';
+            }
+            
+            // Update details
+            document.getElementById('queryId').textContent = queryId;
+            document.getElementById('submittedDate').textContent = submittedDate;
+            
+            // Reset timeline to initial state
+            const timelineSteps = ['acknowledge', 'analysis', 'assigned', 'working', 'testing', 'resolved'];
+            timelineSteps.forEach(step => {
+                document.getElementById('timeline-' + step).classList.remove('active');
+            });
+            
+            // Start with acknowledgment
+            document.getElementById('timeline-acknowledge').classList.add('active');
+            document.getElementById('progressBar').style.width = '0%';
+            
+            // Show status section
+            statusInfo.style.display = 'block';
+            
+            // Smooth scroll to status
+            setTimeout(() => {
+                statusInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+            
+            // Define timing based on query type (complaints are faster)
+            const isComplaint = queryType === 'complaint';
+            const timings = {
+                analysis: isComplaint ? 2000 : 3000,      // Step 2: Collect details & analyze
+                assigned: isComplaint ? 4000 : 6000,      // Step 3: Assign to team
+                working: isComplaint ? 6000 : 9000,       // Step 4-5: RCA & Fix
+                testing: isComplaint ? 8000 : 12000,      // Step 6: Testing
+                resolved: isComplaint ? 10000 : 15000     // Step 7-9: Resolution & Closure
+            };
+            
+            // Step 2: Analysis & RCA
+            setTimeout(() => {
+                document.getElementById('timeline-analysis').classList.add('active');
+                document.getElementById('progressBar').style.width = '16.67%';
+                statusBadge.textContent = 'Under Analysis';
+                statusBadge.className = 'status-badge in-progress';
+                document.getElementById('statusMessageText').textContent = 
+                    'Our team is collecting details and performing Root Cause Analysis (RCA) to identify the issue.';
+            }, timings.analysis);
+            
+            // Step 3: Team Assigned
+            setTimeout(() => {
+                document.getElementById('timeline-assigned').classList.add('active');
+                document.getElementById('progressBar').style.width = '33.33%';
+                statusBadge.textContent = 'Team Assigned';
+                statusBadge.className = 'status-badge in-progress';
+                document.getElementById('statusMessageText').textContent = 
+                    'Issue assigned to the ' + (isComplaint ? 'Priority Support Team' : 'Technical Team') + ' for investigation and resolution.';
+            }, timings.assigned);
+            
+            // Step 4-5: Working on Fix
+            setTimeout(() => {
+                document.getElementById('timeline-working').classList.add('active');
+                document.getElementById('progressBar').style.width = '50%';
+                statusBadge.textContent = 'In Progress';
+                statusBadge.className = 'status-badge in-progress';
+                document.getElementById('statusMessageText').textContent = 
+                    'Our team is actively working on the fix based on the Root Cause Analysis findings.';
+            }, timings.working);
+            
+            // Step 6: Testing
+            setTimeout(() => {
+                document.getElementById('timeline-testing').classList.add('active');
+                document.getElementById('progressBar').style.width = '66.67%';
+                statusBadge.textContent = 'Testing';
+                statusBadge.className = 'status-badge in-progress';
+                document.getElementById('statusMessageText').textContent = 
+                    'The fix is being thoroughly tested in all environments to ensure no side effects.';
+            }, timings.testing);
+            
+            // Step 7-9: Resolved
+            setTimeout(() => {
+                document.getElementById('timeline-resolved').classList.add('active');
+                document.getElementById('progressBar').style.width = '100%';
+                statusBadge.textContent = 'Resolved';
+                statusBadge.className = 'status-badge resolved';
+                document.getElementById('statusMessageText').textContent = 
+                    'Issue resolved! We\'ve sent you the resolution details via email. Please confirm if the issue is resolved. Thank you for your patience!';
+            }, timings.resolved);
+        }
+
+        // Hide status section
+        function hideStatus() {
+            document.getElementById('statusInfo').style.display = 'none';
+        }
+
+        // Track existing query by ID
+        function trackExistingQuery() {
+            const queryId = document.getElementById('trackQueryId').value.trim();
+            const trackError = document.getElementById('trackError');
+            
+            // Validate Query ID format
+            const queryIdPattern = /^SN-\d{4}-\d{4}$/;
+            if (!queryId || !queryIdPattern.test(queryId)) {
+                document.getElementById('trackQueryId').classList.add('invalid');
+                trackError.classList.add('show');
+                return;
+            }
+            
+            // Clear error
+            document.getElementById('trackQueryId').classList.remove('invalid');
+            trackError.classList.remove('show');
+            
+            // Simulate fetching status from database
+            // In real implementation, this would call an API
+            const statusData = getQueryStatusById(queryId);
+            
+            if (statusData) {
+                displayExistingQueryStatus(statusData);
+            } else {
+                trackError.textContent = 'Query ID not found. Please check and try again.';
+                trackError.classList.add('show');
+            }
+        }
+
+        // Simulate database lookup (In real app, call API)
+        function getQueryStatusById(queryId) {
+            // This simulates fetching from database
+            // In production, replace with: fetch(`/api/queries/${queryId}`)
+            
+            // For demo, generate random status
+            const statuses = ['analysis', 'assigned', 'working', 'testing', 'resolved'];
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            const types = ['query', 'complaint', 'feedback'];
+            const randomType = types[Math.floor(Math.random() * types.length)];
+            
+            return {
+                queryId: queryId,
+                type: randomType,
+                subject: 'Sample Query Subject',
+                submittedDate: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toLocaleString('en-IN', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                }),
+                currentStage: randomStatus,
+                expectedDate: randomType === 'complaint' ? 'Within 12-24 hours (Priority)' : 'Within 24-48 hours'
+            };
+        }
+
+        // Display existing query status
+        function displayExistingQueryStatus(data) {
+            const statusInfo = document.getElementById('statusInfo');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            // Update status details
+            document.getElementById('queryId').textContent = data.queryId;
+            document.getElementById('queryTypeDisplay').textContent = data.type.charAt(0).toUpperCase() + data.type.slice(1);
+            document.getElementById('subjectDisplay').textContent = data.subject;
+            document.getElementById('submittedDate').textContent = data.submittedDate;
+            document.getElementById('expectedDate').textContent = data.expectedDate;
+            
+            // Reset all timeline stages
+            const timelineSteps = ['acknowledge', 'analysis', 'assigned', 'working', 'testing', 'resolved'];
+            timelineSteps.forEach(step => {
+                document.getElementById('timeline-' + step).classList.remove('active');
+            });
+            
+            // Activate stages up to current stage
+            const stageOrder = ['acknowledge', 'analysis', 'assigned', 'working', 'testing', 'resolved'];
+            const currentIndex = stageOrder.indexOf(data.currentStage);
+            
+            for (let i = 0; i <= currentIndex; i++) {
+                document.getElementById('timeline-' + stageOrder[i]).classList.add('active');
+            }
+            
+            // Update progress bar
+            const progress = ((currentIndex + 1) / stageOrder.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Update status badge and message
+            const statusMessages = {
+                acknowledge: {
+                    badge: 'Acknowledged',
+                    class: 'pending',
+                    message: 'Thank you for contacting us! Your query has been received and acknowledged.'
+                },
+                analysis: {
+                    badge: 'Under Analysis',
+                    class: 'in-progress',
+                    message: 'Our team is collecting details and performing Root Cause Analysis (RCA) to identify the issue.'
+                },
+                assigned: {
+                    badge: 'Team Assigned',
+                    class: 'in-progress',
+                    message: 'Issue assigned to the ' + (data.type === 'complaint' ? 'Priority Support Team' : 'Technical Team') + ' for investigation and resolution.'
+                },
+                working: {
+                    badge: 'In Progress',
+                    class: 'in-progress',
+                    message: 'Our team is actively working on the fix based on the Root Cause Analysis findings.'
+                },
+                testing: {
+                    badge: 'Testing',
+                    class: 'in-progress',
+                    message: 'The fix is being thoroughly tested in all environments to ensure no side effects.'
+                },
+                resolved: {
+                    badge: 'Resolved',
+                    class: 'resolved',
+                    message: 'Issue resolved! We\'ve sent you the resolution details via email. Please confirm if the issue is resolved. Thank you!'
+                }
+            };
+            
+            const currentStatus = statusMessages[data.currentStage];
+            statusBadge.textContent = currentStatus.badge;
+            statusBadge.className = 'status-badge ' + currentStatus.class;
+            document.getElementById('statusMessageText').textContent = currentStatus.message;
+            
+            // Show status section
+            statusInfo.style.display = 'block';
+            
+            // Scroll to status
+            setTimeout(() => {
+                statusInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+            
+            // Clear the track input
+            document.getElementById('trackQueryId').value = '';
+        }
+
+        // FAQ toggle function
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    if (otherAnswer) {
+                        otherAnswer.classList.remove('show');
+                    }
+                }
+            });
+            
+            // Toggle current FAQ
+            element.classList.toggle('active');
+            if (answer) {
+                answer.classList.toggle('show');
+            }
+        }
+
+        // Clear error messages on input
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.form-control, .form-select');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.classList.remove('invalid');
+                    const errorId = this.id + 'Error';
+                    const errorElement = document.getElementById(errorId);
+                    if (errorElement) {
+                        errorElement.classList.remove('show');
+                    }
+                });
+            });
+
+            // Clear track error when typing
+            document.getElementById('trackQueryId').addEventListener('input', function() {
+                this.classList.remove('invalid');
+                document.getElementById('trackError').classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
