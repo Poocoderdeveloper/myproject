@@ -1,0 +1,17 @@
+/* Primary style (Fees >= 4000) */
+.fees-primary {
+  background-color: #0d6efd; /* Bootstrap primary */
+  color: white;
+}
+
+/* Danger style (Fees < 4000) */
+.fees-danger {
+  background-color: #dc3545; /* Bootstrap danger */
+  color: white;
+}
+
+/* Optional: smooth hover */
+.table-hover tbody tr:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}

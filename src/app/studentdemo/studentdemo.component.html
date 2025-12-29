@@ -1,0 +1,58 @@
+<!-- <p>studentdemo works!</p>
+
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>Fees</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        @for (s of stud; track s.id) {
+          @if (s.Fees > 30) {
+            <tr style="color: red;">
+              <td>{{ s.id }}</td>
+              <td>{{ s.name }}</td>
+              <td>{{ s.Fees }}</td>
+            </tr>
+          } 
+        }
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+<p class="fw-bold text-success">studentdemo works!</p>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>grade</th>
+          <th>Fees</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (s of stud; track s.id) {
+          <tr [ngClass]="getFeesClass(s.Fees)">
+            <td>{{ s.id }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.Grade}}</td>
+            <td>{{ s.Fees }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<p>styledemo not works!</p>
+
+ <!-- <div class="row">
+  <div class="col">
+   c
+        @for (c of city; track c.cityid) {
+          @if (c.cityTemp > 30) {
+            <tr style="color: red;">
+              <td>{{ c.cityid }}</td>
+              <td>{{ c.cityname }}</td>
+              <td>{{ c.cityTemp }}</td>
+            </tr>
+          } @else {
+            <tr>
+              <td>{{ c.cityid }}</td>
+              <td>{{ c.cityname }}</td>
+              <td>{{ c.cityTemp }}</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+</div> 
+ -->
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>City Name</th>
+      <th>Min Temp</th>
+      <th>Max Temp</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (c of city; track c.id) {
+      <tr [ngStyle]="{ color: getColor(c.min) }">
+        <td>{{ c.id }}</td>
+        <td>{{ c.cityname }}</td>
+        <td>{{ c.min }}</td>
+        <td>{{ c.max }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+
+ <!-- <hr>
+ @for (c of city; track c.id){
+  <tr [ngstyle]="{'color':getcolor(c.min)}">
+    <td>{{c.id}}</td>
+     <td>{{c.cityname}}</td>
+      <td>{{c.min}}</td>
+       <td>{{c.max}}</td>
+       </tr>
+ } -->
